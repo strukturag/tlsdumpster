@@ -21,18 +21,23 @@ TLS dumpster prints incoming TLS requests details (host, url, headers and body) 
   Get and build TLS dumpster
 
     $ go get github.com/strukturag/tlsdumpster
+    $ tlsdumpster -h
+    Usage of tlsdumpster:
+      -cert="": Certificate file.
+      -key="": Key file.
+      -l="127.0.0.1:8443": Listen address.
 
 ## Usage
 
   Intercept traffic
 
-  	sudo iptables -t nat -A OUTPUT -p tcp --dst $TARGET --dport 443 -j DNAT --to-destination 127.0.0.1:18443
+  	sudo iptables -t nat -A OUTPUT -p tcp --dst $TARGET --dport 443 -j DNAT --to-destination 127.0.0.1:8443
 
   Where $TARGET is the IP address of the target. Make sure that the desitination IP and port match whatever you start tlsdumpster with.
 
   Start tlsdumpster
 
-	$ tlsdumpster -l=127.0.0.1:18443 -cert=cert.pem -key=key.pem
+	$ tlsdumpster -l=127.0.0.1:8443 -cert=cert.pem -key=key.pem
 
   Where the cert and key are pem encoded. Make sure that the software
   does accept connecting to this certificate to see anything.
