@@ -9,24 +9,24 @@ TLS dumpster prints incoming TLS requests details (host, url, headers and body) 
 
 ## Building
 
-  ### Setup up your gopath
+  Setup up your gopath
 
     $ mkdir -p $HOME/go
     $ export GOPATH=$HOME/go
 
-  ### For convenience, add the workspace's bin subdirectory to your PATH
+  For convenience, add the workspace's bin subdirectory to your PATH
 
   	$ export PATH=$PATH:$GOPATH/bin
 
 ## Usage
 
-  ### Intercept traffic
+  Intercept traffic
 
   	sudo iptables -t nat -A OUTPUT -p tcp --dst $TARGET --dport 443 -j DNAT --to-destination 127.0.0.1:18443
 
   Where $TARGET is the IP address of the target. Make sure that the desitination IP and port match whatever you start tlsdumpster with.
 
-  ### Start tlsdumpster
+  Start tlsdumpster
 
 	$ tlsdumpster -l=127.0.0.1:18443 -cert=cert.pem -key=key.pem
 
