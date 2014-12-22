@@ -31,15 +31,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package main
 
 import (
+	"bytes"
 	"crypto/rand"
 	"crypto/tls"
 	"flag"
+	"fmt"
+	"github.com/kr/pretty"
 	"log"
-    "fmt"
 	"net/http"
 	"time"
-    "github.com/kr/pretty"
-    "bytes"
 )
 
 var listenAddress string
@@ -70,22 +70,22 @@ func makeDefaultCipherSuites() []uint16 {
 
 func handler(w http.ResponseWriter, r *http.Request) {
 
-    fmt.Printf("%s host   : %s\n", r.RemoteAddr, r.Host)
-    fmt.Printf("%s uri    : %s\n", r.RemoteAddr ,r.RequestURI)
-    fmt.Printf("%s method : %s\n", r.RemoteAddr, r.Method)
-    fmt.Printf("%s header : %# v\n", r.RemoteAddr, pretty.Formatter(r.Header))
+	fmt.Printf("%s host   : %s\n", r.RemoteAddr, r.Host)
+	fmt.Printf("%s uri    : %s\n", r.RemoteAddr, r.RequestURI)
+	fmt.Printf("%s method : %s\n", r.RemoteAddr, r.Method)
+	fmt.Printf("%s header : %# v\n", r.RemoteAddr, pretty.Formatter(r.Header))
 
-    buf := new(bytes.Buffer)
-    buf.ReadFrom(r.Body)
-    fmt.Printf("%s body : %# v\n", r.RemoteAddr, pretty.Formatter(buf.String()))
+	buf := new(bytes.Buffer)
+	buf.ReadFrom(r.Body)
+	fmt.Printf("%s body : %# v\n", r.RemoteAddr, pretty.Formatter(buf.String()))
 
-    http.Error(w, "Nothing here", http.StatusInternalServerError)
+	http.Error(w, "Nothing here", http.StatusInternalServerError)
 
 }
 
 func main() {
 
-    var err error
+	var err error
 
 	flag.Parse()
 
