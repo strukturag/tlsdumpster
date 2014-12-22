@@ -18,6 +18,10 @@ TLS dumpster prints incoming TLS requests details (host, url, headers and body) 
 
   	$ export PATH=$PATH:$GOPATH/bin
 
+  Get and build TLS dumpster
+
+    $ go get github.com/strukturag/tlsdumpster
+
 ## Usage
 
   Intercept traffic
