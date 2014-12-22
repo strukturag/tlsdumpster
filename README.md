@@ -33,7 +33,7 @@ TLS dumpster prints incoming TLS requests details (host, url, headers and body) 
   Where the cert and key are pem encoded. Make sure that the software
   does accept connecting to this certificate to see anything.
 
-  Start your app. TLS dumpster will intercept all all incoming requests to stdout.
+  Start your app and execute the requests. TLS dumpster will intercept all incoming requests and print them to stdout.
 
 ## License
 
